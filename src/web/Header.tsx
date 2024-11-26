@@ -8,7 +8,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
   return (
     <header>
-      <div className="logo">Jul.</div>
+      <div className="logo">aurélie</div>
       <nav>
         <a href="#features" onClick={(e) => scrollToSection(e, "features")}>
           פתרונות
