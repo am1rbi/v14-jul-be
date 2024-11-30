@@ -1,5 +1,14 @@
+
 import React, { useMemo, useState } from "react";
 import { Upload, X, Loader, User, Phone, DollarSign, Calendar, Image } from "lucide-react";
+import { useSubmission } from '../hooks/useSubmission';
+import PersonalInfoStep from '../components/funnel/PersonalInfoStep';
+import DesignStep from '../components/funnel/DesignStep';
+import BudgetStep from '../components/funnel/BudgetStep';
+import DueDateStep from '../components/funnel/DueDateStep';
+import SuccessStep from '../components/funnel/SuccessStep';
+import { FormData, FormErrors } from '../components/funnel/types';
+import { dueDateMapping } from '../types/submission';
 import "./funnel-modal.css";
 
 export interface FunnelModalProps {
@@ -169,7 +178,7 @@ const FunnelModal: React.FC<FunnelModalProps> = ({ onClose, step: initialStep })
     return true;
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (step === "personal") {
       if (validatePersonalInfo()) {
         setStep("design");
@@ -185,16 +194,32 @@ const FunnelModal: React.FC<FunnelModalProps> = ({ onClose, step: initialStep })
       }
     } else if (step === "dueDate") {
       if (validateDueDate()) {
-        setStep("success");
+        try {
+          const mappedDueDate = dueDateMapping[formData.dueDate];
+          if (!mappedDueDate) {
+            throw new Error('Invalid due date value');
+          }
+
+          await submitForm({
+            first_name: formData.name.split(' ')[0],
+            last_name: formData.name.split(' ').slice(1).join(' '),
+            email: formData.email,
+            phone_number: formData.phone,
+            budget_range: formData.budget,
+            due_date: mappedDueDate,
+            design_description: formData.designDescription
+          }, formData.designImagePreview ? [formData.designImagePreview] : []);
+          
+          setStep("success");
+        } catch (error) {
+          console.error('Error submitting form:', error);
+          setErrors(prev => ({
+            ...prev,
+            submit: 'אירעה שגיאה בשליחת הטופס. אנא נסו שנית.'
+          }));
+        }
       }
     }
-  };
-
-  const handleBack = () => {
-    if (step === "design") setStep("personal");
-    if (step === "budget") setStep("design");
-    if (step === "dueDate") setStep("budget");
-    if (step === "success") setStep("dueDate");
   };
 
   const renderSuccessContent = () => {
