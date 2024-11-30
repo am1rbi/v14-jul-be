@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap');
 
+
 /* Reset and base styles */
 * {
   margin: 0;
@@ -9,6 +10,7 @@
 
 body {
   overflow-x: hidden;
+  background-color: #000;
 }
 
 /* Noto Sans Hebrew font */
@@ -30,7 +32,363 @@ body {
   direction: rtl;
   overflow-x: hidden;
   color: white;
+  background-color: #000;
 }
+
+/* CTA Button styles */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.continue-button {
+  background-color: white !important;
+  color: black !important;
+  font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+  font-weight: 400 !important;
+  padding: clamp(0.875rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 2.5rem) !important;
+  border-radius: 12px !important;
+  width: auto !important;
+  min-width: min(220px, 90%) !important;
+  max-width: 90% !important;
+  height: auto !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  animation: fadeInUp 0.8s ease-out 0.3s backwards;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.continue-button:hover {
+  transform: translateY(-2px);
+  background-color: #f8f8f8 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.continue-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Responsive styles for CTA button */
+@media (max-width: 768px) {
+  .cta-buttons {
+    margin: 1.5rem 0;
+    padding: 0 0.75rem;
+  }
+  
+  .continue-button {
+    min-width: min(200px, 95%) !important;
+    font-size: 1rem !important;
+    padding: 0.875rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-buttons {
+    margin: 1rem 0;
+    padding: 0 0.5rem;
+  }
+  
+  .continue-button {
+    min-width: min(180px, 100%) !important;
+    font-size: 0.875rem !important;
+    padding: 0.75rem 1.25rem !important;
+    white-space: normal;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .continue-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .continue-button:active {
+    background-color: #f0f0f0 !important;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .continue-button {
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Features section styles */
+#features {
+  scroll-margin-top: 80px;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  font-family: "Noto Sans Hebrew", sans-serif;
+  direction: rtl;
+  padding: 6rem 0;
+  color: #333;
+}
+
+#features .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+#features .header-row {
+  display: flex;
+  justify-content: center;
+  gap: 12rem;
+  margin-bottom: 5rem;
+}
+
+#features h2 {
+  font-size: 3.5rem;
+  font-weight: 200;
+  color: #333;
+  text-align: center;
+  min-width: 200px;
+}
+
+#features .features-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+#features .feature-pair {
+  display: flex;
+  justify-content: center;
+  gap: 12rem;
+  align-items: flex-start;
+}
+
+#features .feature-item {
+  text-align: center;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#features h3 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #111;
+  margin: 0 0 1rem 0;
+  width: 100%;
+  text-align: center;
+}
+
+#features p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #666;
+  margin: 0;
+  text-align: center;
+}
+
+#features .icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  height: 48px;
+}
+
+#features .lucide {
+  width: 3rem;
+  height: 3rem;
+  stroke-width: 1.5;
+}
+
+#features .problem-icon {
+  color: #666;
+}
+
+#features .solution-icon {
+  color: #eab308;
+}
+
+/* About section styles */
+#about {
+  scroll-margin-top: 80px;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 8rem 0;
+  color: white;
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+#about h2 {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 200;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.about-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #eab308, transparent);
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.about-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #eab308 0%, #fbbf24 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+}
+
+.about-icon {
+  font-size: 2.5rem;
+}
+
+#about h3 {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+#about p {
+  color: #e5e5e5;
+  line-height: 1.8;
+  font-size: 1.125rem;
+  font-weight: 300;
+}
+
+/* Rest of your existing styles... */
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  #features .header-row,
+  #features .feature-pair {
+    gap: 8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #features .header-row {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  #features .feature-pair {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  #about h2 {
+    font-size: 2.5rem;
+  }
+
+  #about h3 {
+    font-size: 1.5rem;
+  }
+
+  #about p {
+    font-size: 1rem;
+  }
+}
+
+/* Rest of your existing styles... */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap');
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+/* Noto Sans Hebrew font */
+.noto-sans-hebrew {
+  font-family: "Noto Sans Hebrew", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+/* Landing page styles */
+.landing-page {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Noto Sans Hebrew', Arial, sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+  color: white;
+  background-color: #000;
+}
+
 
 /* Header styles */
 header {
