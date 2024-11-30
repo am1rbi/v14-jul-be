@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
-import FunnelModal from "./FunnelModal";
+import { motion, AnimatePresence } from "framer-motion";
+import FunnelModal from "../components/funnel/FunnelModal";
+import ErrorBoundary from "../components/ErrorBoundary";
 import FeaturesSection from "./FeaturesSection";
 import AboutSection from "./AboutSection";
 import VideoSection from "./VideoSection";
 import Header from "./Header";
 import HeroSection from "./HeroSection";
 import Footer from "./Footer";
+import "./styles.css";
 
 const LandingPage: React.FC = () => {
   const [isFunnelModalOpen, setIsFunnelModalOpen] = useState(false);
